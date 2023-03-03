@@ -1,0 +1,60 @@
+
+/*
+****************************************************************************
+
+CS315 HW01 - ASSOCIATIVE ARRAYS - JAVASCRIPT
+Barış Tan Ünal
+22003617
+Section: 03
+
+****************************************************************************
+*/
+
+// 1. Initialize.
+var jsArr = { 
+  "key1": 'firstKey', 
+  "key2": 2, 
+  "key3": null, 
+  "key4": 44.4, 
+  "key5": true, 
+  "key6": [ 'subArr1', 'subArr2', 'subArr3' ]
+};
+
+// 2. Get the value for a given key.
+console.log(jsArr['key2']);
+
+// 3. Add a new element.
+jsArr["key7"] = 'javaScript';
+console.log("\nAdded key7:");
+console.log(jsArr);
+
+// 4. Remove an element.
+delete jsArr["key2"];
+console.log("\nRemoved key2:");
+console.log( jsArr);
+
+// 5. Modify the value of an existing element.
+jsArr["key3"] = 'thirdkey';
+console.log("\nModified key3:");
+console.log(jsArr);
+
+// 6. Search for the existence of a key
+console.log("\nChecking for the existence of key1: ");
+console.log("key1" in jsArr);
+console.log("\nChecking for the existence of key2: ");
+console.log("key2" in jsArr);
+
+// 7. Search for the existence of a value
+console.log("\nChecking for the existence of value 'null': ");
+console.log( Object.values(jsArr).includes( null ) );
+console.log("\nChecking for the existence of value '44.4': ");
+console.log( Object.values(jsArr).includes( 44.4 ) );
+
+// 8. Loop through an associative array, apply a function, called foo, which simply prints the key-value pair
+function foo( arr ) {
+  for( const key in arr ) {
+    console.log( key, arr[key] );
+  } 
+}
+console.log("\nCalling foo: ");
+foo( jsArr );
