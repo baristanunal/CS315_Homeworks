@@ -1,0 +1,70 @@
+
+// PART 1: Should the conditional mechanism be an integral part of the exit (conditional or unconditional exit)?
+
+// Both conditional and unconditional exits are possible to implement in JavaScript. A simple conditional exit is as follows.
+console.log( "CONDITIONAL EXIT \nCountdown from 10:" );
+x = 9;
+while( x >= 0 ){
+  console.log(x);
+  x--;
+}
+
+// However, conditional mechanism is NOT an integral part of the exit in JavaScript. One can use "break" statement. There are two types of break statements. First one is the unlabeled one.
+console.log( "\nUNCONDITIONAL UNLABELED EXIT \nCounting up to 10:" );
+for( let i = 0; i < 10; i++ ) {
+  if( i == 5 ) {
+    break;
+  }
+  console.log(i);
+}
+
+
+// PART 2: Should only one loop body be exited or can enclosing loops also be exited (labeled or unlabeled exit)?
+
+// The second option to use the "break" statement is to state a label which points a line of code to continue executing.
+console.log( "\nUNCONDITIONAL LABELED EXIT \nThree nested loops with break statement: " );
+for( let i = 0; i <= 2; i++ ) {
+  console.log( "Inside first loop i = " + i );
+  loop1:
+  for( let j = 0; j <= 2; j++ ) {
+    console.log( "Inside second loop j = " + j );
+    for( let k = 0; k <= 2; k++ ) {
+      if( j > 1 ) {
+        break loop1;
+        // exits the second loop and continues execution of the first loop's body
+      }
+      console.log( "Inside third loop k = " + k);
+    }
+  }
+}
+// When we reach the innermost loop when j==2 i.e, for the third time, the "break" statement is executed and the block which label "loop1" points to i.e, the second loop, is exited. 
+
+// The "continue" keyword can be used with or without labels. The one without a label is as follows.
+console.log( "\nUNLABELED CONTINUE \nTwo nested loops with unlabeled continue statement:" );
+for( let i = 0; i <= 3; i++ ) {
+  console.log( "Inside first loop i = " + i );
+  for( let j = 0; j <= 3; j++ ) {
+    if( j == 1 ){
+      continue;
+    }
+    console.log( "Inside second loop j = " + j );
+  }
+}
+// When j==1, continue statement is executed and the program continues to check the condition for the innermost loop of the body that "continue" statement is in and executes the body if the condition holds.
+
+// A "continue" statement with a label is as follows.
+console.log( "\nLABELED CONTINUE \nTwo nested loops with labeled continue statement:" );
+loopOuter:
+for( let i = 0; i <= 3; i++ ) {
+  console.log( "Inside first loop i = " + i );
+  for( let j = 0; j <= 3; j++ ) {
+    if( j == 1 ){
+      continue loopOuter;
+    }
+    console.log( "Inside second loop j = " + j );
+  }
+}
+// When j==1, continue statement is executed and the program continues to check the condition for the outer loop since the label "loopOuter" points to that loop. Therefore, we never see j become 1, 2 or 3.
+
+
+
